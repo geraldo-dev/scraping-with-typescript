@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "puppeteer": "^24.1.1"
+  },
+  "scripts": {
+    "start": "node dist/main.js"
+  },
+  "name": "scraping-with-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/geraldo-dev/scraping-with-typescript.git",
+  "author": "geraldo ferreira <geraldosousadev@gmail.com>",
+  "license": "MIT"
+}
