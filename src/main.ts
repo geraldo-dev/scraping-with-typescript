@@ -1,9 +1,10 @@
 import puppeteer from "puppeteer";
+import fs from 'node:fs';
 
 async function main() {
     
     let start = 1000;
-    let stop = 1005;
+    let stop = 1001;
     let pages = [];
 
     for(start; start <= stop; start++){
@@ -31,8 +32,20 @@ async function main() {
         
         await browser.close();
     }
-    
-    console.log(pages);
+
+
+    //save in file
+    pages.forEach((phrase)=>{
+
+        fs.appendFile('../lista_frases_ingles.csv', `${phrase}\n`, 'utf8', (err)=>{
+            if(err){
+                console.log(err);
+            }
+        });
+
+    });
+
+    console.log('salva com sucesso!');
 }
 
 main();
