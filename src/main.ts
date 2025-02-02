@@ -11,7 +11,21 @@ async function main() {
     const page = await browser.newPage();
     await page.goto(url);
 
+    let result = await page.evaluate(()=>{
 
+        let items: string [] = [];
+
+        document.querySelectorAll('dl > dt > a').forEach((item)=>{
+            if(item.textContent !== 'MP3'){
+                items.push(String(item.textContent));
+            }
+        });
+
+        return items;
+
+    });
+
+    console.log(result)
 
 
     await browser.close();
