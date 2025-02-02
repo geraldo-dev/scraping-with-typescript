@@ -6,30 +6,33 @@ async function main() {
     let stop = 1005;
     let pages = [];
 
-    const url = `https://www.manythings.org/bilingual/por/${1000}.html`;
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(url);
+    for(start; start <= stop; start++){
 
-    let result = await page.evaluate(()=>{
-
-        let items: string [] = [];
-
-        document.querySelectorAll('dl > dt > a').forEach((item)=>{
-            if(item.textContent !== 'MP3'){
-                items.push(String(item.textContent));
-            }
+        const url = `https://www.manythings.org/bilingual/por/${start}.html`;
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(url);
+    
+        let result = await page.evaluate(()=>{
+    
+            let items: string [] = [];
+    
+            document.querySelectorAll('dl > dt > a').forEach((item)=>{
+                if(item.textContent !== 'MP3'){
+                    items.push(String(item.textContent));
+                }
+            });
+    
+            return items;
+    
         });
 
-        return items;
-
-    });
-
-    console.log(result)
-
-
-    await browser.close();
-
+        pages.push(...result);
+        
+        await browser.close();
+    }
+    
+    console.log(pages);
 }
 
 main();
