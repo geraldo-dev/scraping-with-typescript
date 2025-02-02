@@ -3,7 +3,9 @@
     "puppeteer": "^24.1.1"
   },
   "scripts": {
-    "start": "node dist/main.js"
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "dev": "tsx src/main.ts"
   },
   "name": "scraping-with-typescript",
   "version": "1.0.0",

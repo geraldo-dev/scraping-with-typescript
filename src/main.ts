@@ -36,8 +36,8 @@ async function main() {
 
     //save in file
     pages.forEach((phrase)=>{
-
-        fs.appendFile('../lista_frases_ingles.csv', `${phrase}\n`, 'utf8', (err)=>{
+        
+        fs.appendFile('lista_frases_ingles.csv', `${phrase}\n`, 'utf8', (err)=>{
             if(err){
                 console.log(err);
             }
